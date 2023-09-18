@@ -19,7 +19,7 @@ function login_ssh {
     local socks_port=$5
 
     # Command to log in to the SSH server using the SOCKS5 proxy
-    if sshpass -p "$ssh_pass" ssh -D "$socks_port" -f -C -q -N "$ssh_user@$ssh_host" -p "$ssh_port"; then
+    if sshpass -p "$ssh_pass" ssh -D "$socks_port" -f -C -q -N "$ssh_user@$ssh_host" -p "$ssh_port" -o StrictHostKeyChecking=no; then
         echo "Connected: $ssh_user@$ssh_host"
     else
         echo "Error connecting: $ssh_user@$ssh_host"
